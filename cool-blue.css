@@ -1,0 +1,367 @@
+/*
+ Author Name : Kevin Deldycke
+ Author Site : http://kev.coolcavemen.com
+ Style Name  : Cool Blue
+ Style URI   : http://kev.coolcavemen.com/wp-content/themes/k2/styles/cool-blue
+ Version     : 0.1
+ Comments    : This style is designed for K2 RC3 theme.
+ Copyright   : Kevin Deldycke
+ Licence     : GNU/GPL
+ Header Text Color: #fff
+ Header Height: 180px
+*/
+
+
+/* ====================================================
+**  Theme main code
+** ====================================================
+*/
+
+body, #page {
+ background: #eee url(background.png) center top repeat-x;
+}
+
+/* Main font color */
+body,
+h2, h2 a, h2 a:visited,
+h3, h3 a, h3 a:visited,
+h4, h4 a, h4 a:visited,
+.entry-content,
+input[type=text], textarea,
+blockquote {
+ color: #333;
+}
+
+#page {
+ padding-top: 0;
+ border: 0;
+}
+
+
+/* Style header */
+
+#header {
+ background: transparent url(header.jpg);
+ height: 138px; /* Reduced from 200px */
+}
+
+h1.blog-title {
+ padding-top: 25px; /* Original is 75px. We changed it because header heigh was reduced and a horizontal line was added under the blog title */
+}
+
+#header h1, #header .description {
+ text-align: center;
+}
+
+#header h1 {
+ background: transparent url(horizontal-line-2.png) center bottom no-repeat;
+ padding-bottom: 10px; /* 10px is the size of the horizontal-line.png image */
+}
+
+#header h1 a:hover {text-decoration: none}
+
+#header .description {
+ color: #999;
+}
+
+
+/* Don't waste main column width with inner-padding */
+.content {
+ padding: 0;
+}
+#primary {
+ width: 540px;
+ padding-right: 10px;
+}
+
+
+/* Tabs style */
+ul.menu {
+ /* Make tabs full-width */
+ width: 100%;
+ left: 0;
+ padding-left: 0;
+ padding-right: 0;
+}
+ul.menu li.current_page_item a {
+ background: #eee;
+}
+ul.menu li a:hover {
+ background: #3463aa;
+}
+
+
+/* Sidebar styling */
+#sidebar-1 {
+ background: #ddddeb url(bottom-sidebar.png) no-repeat center bottom;
+ padding-bottom: 91px;
+}
+
+
+/* TODO: move search box elsewhere ? */
+#searchreset {
+}
+
+
+/* Comments style */
+li.comment {
+ background: #f4efe9;
+ border: 1px solid #ccc;
+}
+
+li.bypostauthor {
+ background: #f9f9f9;
+}
+
+.subscribe-to-comments {
+ float: left;
+ padding-left: 20px;
+ background: url(email.png) no-repeat left center;
+ margin-left: 7px;
+}
+
+/* Footer style */
+#footer {
+ background: #2f75a9 none center bottom no-repeat;
+ color: #ccc;
+ padding-top: .8em;
+ padding-bottom: .8em;
+ border-top: 2px solid #666;
+ margin-top: 2em;
+}
+
+#footer a {
+ color: #eee;
+ border: 0;
+}
+
+/* TODO: render comments like
+http://www.willmayo.com/2007/02/10/css-speech-bubbles/
+*/
+
+/*
+TODO: Use nice shadows on images -> http://theshapeofdays.com/2005/11/29/my-contribution-to-the-css-shadow-kerfuffle.html
+*/
+
+
+/* ====================================================
+**  K2 bug fixes: should be commited in K2 trunk but
+**  i'm too lazy yet to submit a bug report...
+** ====================================================
+*/
+
+/* Bug Fix: display second level lists in comments and make list look the same in comments as in posts.
+** Test case:
+**   - for <ul>: http://kev.coolcavemen.com/2006/08/e107-to-wordpress-migration-here-is-why/#comment-92
+**     should look like http://kev.coolcavemen.com/2006/08/e107-to-wordpress-migration-here-is-why/
+**   - for <ol>: http://kev.coolcavemen.com/2006/08/konqueror-config-file-disable-menu-bar/#comment-2893
+**     should look like http://kev.coolcavemen.com/2007/04/how-to-block-ads-in-konqueror/
+*/
+#commentlist ul, #commentlist ol {
+ padding-left: 35px;
+ margin-top: 13px;
+ margin-bottom: 13px;
+}
+#commentlist li li {
+ margin-top: 0;
+ margin-bottom: 3px;
+ padding-top: 0;
+ padding-right: 0;
+ padding-bottom: 0;
+ list-style-type: inherit;
+ list-style-image: inherit;
+ list-style-position: inherit;
+}
+
+/* Margins are not consistent in original K2 theme for images inside a post.
+** This is particularly obvious when several images are displayed side by side.
+** This rule put the same 5px margin for each side of the image.
+** Test case: http://kev.coolcavemen.com/2006/09/cd-templates-for-jewel-case-in-svg/
+*/
+#primary .entry-content img {
+ margin: 5px;
+}
+/* Previous rule mess all posts up if one post end with an "imagelink".
+** This rule fix this bad behaviour, on front page and on single post view
+** (=view with comments).
+*/
+#primary .hentry,
+#primary div.comments {
+ clear: both;
+}
+/* Same as above but for list below images.
+** Test case: http://kev.coolcavemen.com/2007/04/how-to-block-ads-in-konqueror/
+*/
+#primary ul, #primary ol {
+ clear: both;
+}
+/* Reset smileys 5px margin rule to their default value.
+** Test case: http://kev.coolcavemen.com/2007/06/how-to-launch-a-kde-application-in-another-language/
+*/
+#primary .entry-content img.wp-smiley {
+ margin: 0;
+}
+
+/* Line wrap for code.
+** Source: http://www.longren.org/2006/09/27/wrapping-text-inside-pre-tags/
+*/
+pre {
+ white-space: pre-wrap;       /* css-3 */
+ white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+ white-space: -pre-wrap;      /* Opera 4-6 */
+ white-space: -o-pre-wrap;    /* Opera 7 */
+ word-wrap: break-word;       /* Internet Explorer 5.5+ */
+ width: 99%;
+}
+
+/* I don't want to force vertical scrollbar ! It makes konqueror buggy */
+html {
+ overflow-y: inherit;
+ height: inherit;
+ margin-bottom: inherit;
+}
+
+/* Clear left aligned images to fix the "cascaded" image alignements.
+** Use case: http://www.coolcavemen.com/2008/pont-a-rockmasnya-et-a-labattoir/
+*/
+img.alignleft, img[align="left"] {
+ clear: left;
+}
+
+/* List styles were aparently reseted in K2 1.0RC6. Here is a fix.
+** Use case: http://www.coolcavemen.com/2008/nouvelle-version-du-site/
+*/
+ol, ul {
+ list-style-type: disc;
+}
+
+
+/* ====================================================
+**  Other K2 style customisations: Mainly coded for my
+**  personnal blog. It's not a bad idea to remove all
+**  the CSS code below to revert to default K2
+**  behaviour.
+** ====================================================
+*/
+
+/* Consistent unordered list style.
+*/
+ul, ul li {
+ list-style-position: inside;
+ list-style-type: disc;
+}
+
+/* This kind of blockquote is more efficient: it is wider thant K2 default bloquotes as it use a thicker left border instead of padding.
+*/
+blockquote,
+li.bypostauthor blockquote /* K2 has a default special formatting for blockquote by post author */
+{
+ background-color: #f6f6f6;
+ background-image: none;
+ border-width: 1px 1px 1px 3px;
+ border-color: #ccc;
+ border-style: dotted dotted dotted solid;
+ padding-right: 1em;
+ padding-left: 1em;
+}
+
+/* It's easier for the user to spot some widget listing if we show a
+** graphical element before each one, because the visibility of the post
+** list is reduced when long titles get rendered on multiple lines.
+**   TODO: use a fancier image instead of displaying a simple 'disc'.
+*/
+div.sb-latest  ul li,
+div.sb-related ul li {
+ list-style-type: disc;
+}
+
+/* Make image link easier to spot by using a subtile blue color.
+*/
+#primary .entry-content a.imagelink img {
+ border-color: #a7c0de;
+}
+#primary .entry-content a.imagelink:hover img {
+ border-color: #277ade;
+ background-color: #eee;
+}
+
+/* Float each image within a post to left,
+** except for images with 'center' class, and smileys.
+*/
+#primary .entry-content img {
+ float: left;
+}
+
+#primary .entry-content img.center,
+#primary .entry-content img.wp-smiley {
+ float: inherit;
+}
+
+/* Center image with "center" class
+*/
+#primary .entry-content img.center {
+ display: block;
+ margin-right: auto;
+ margin-left: auto;
+}
+
+/* Sometimes I add images within titles tags as icons.
+** Test case: http://kev.coolcavemen.com/linux-scripts/
+*/
+#primary .entry-content h4 img {
+ border: 0;
+ padding: 0;
+ margin: 0;
+ margin-right: 5px;
+}
+
+/* Style comment form to make input fields thicker and flat (easier to spot)
+*/
+.comments input[type='text'], textarea#comment {
+ border: 2px solid #ccc;
+}
+
+/* Separate bottom navigation using a light dotted line
+*/
+.comments .navigation {
+ border-top: 1px dotted #ccc;
+ padding-top: .6em;
+}
+
+
+/* Display all pingbacks in a single box.
+** Inspired by True Blue v1.4 theme: http://stevelam.org/2007/03/true-blue-14/
+*/
+.comments #pinglist {
+ background: #e4e9ef;
+ border-width: 3px 1px 1px;
+ border-color: #d2d7dd;
+ border-style: solid;
+}
+
+/* TODO: author and user post should be rounded */
+
+
+
+/* ====================================================
+**  Backports from K2 v0.9.6
+** ====================================================
+*/
+
+/* Keep admin tab on the right */
+.admintab {
+ position: absolute;
+ right: 0;
+}
+* html .admintab { padding: 5px 15px 6px } /* IE hack */
+
+/* Keep image auto-sizing to column width */
+.entry-content img {
+ margin: 0 5px;
+ padding: 4px;
+ border: 1px solid #ccc;
+ max-width: 100%;
+}
+primary table img {
+  max-width: none;
+}
