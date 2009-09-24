@@ -189,12 +189,6 @@ TODO: Use nice shadows on images -> http://theshapeofdays.com/2005/11/29/my-cont
 #primary div.comments {
  clear: both;
 }
-/* Same as above but for list below images.
-** Test case: http://kevin.deldycke.com/2007/04/how-to-block-ads-in-konqueror/
-*/
-#primary ul, #primary ol {
- clear: both;
-}
 /* Reset smileys 5px margin rule to their default value.
 ** Test case: http://kevin.deldycke.com/2007/06/how-to-launch-a-kde-application-in-another-language/
 */
@@ -219,20 +213,6 @@ html {
  overflow-y: inherit;
  height: inherit;
  margin-bottom: inherit;
-}
-
-/* Clear left aligned images to fix the "cascaded" image alignements.
-** Use case: http://www.coolcavemen.com/2008/pont-a-rockmasnya-et-a-labattoir/
-*/
-img.alignleft, img[align="left"] {
- clear: left;
-}
-
-/* List styles were aparently reseted in K2 1.0RC6. Here is a fix.
-** Use case: http://www.coolcavemen.com/2008/nouvelle-version-du-site/
-*/
-ol, ul {
- list-style-type: disc;
 }
 
 
@@ -283,26 +263,6 @@ div.sb-related ul li {
 #primary .entry-content a.imagelink:hover img {
  border-color: #277ade;
  background-color: #eee;
-}
-
-/* Float each image within a post to left,
-** except for images with 'center' class, and smileys.
-*/
-#primary .entry-content img {
- float: left;
-}
-
-#primary .entry-content img.center,
-#primary .entry-content img.wp-smiley {
- float: inherit;
-}
-
-/* Center image with "center" class
-*/
-#primary .entry-content img.center {
- display: block;
- margin-right: auto;
- margin-left: auto;
 }
 
 /* Sometimes I add images within titles tags as icons.
